@@ -190,7 +190,7 @@ class _NewPostState extends ConsumerState<NewPost> {
                               child: Opacity(
                                 opacity: 0.7,
                                 child: Text(
-                                  "2days ago",
+                                  "now",
                                   style: TextStyle(
                                     color: Colors.grey,
                                   ),
