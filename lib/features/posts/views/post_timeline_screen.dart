@@ -117,9 +117,21 @@ class PostTimelineScreenState extends ConsumerState<PostTimelineScreen> {
                       // ),
                       title: Padding(
                         padding: EdgeInsets.all(12.0),
-                        child: FaIcon(
-                          FontAwesomeIcons.faceSmile,
-                          size: 36,
+                        child: Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.heartbeat,
+                              size: 36,
+                            ),
+                            Gaps.h10,
+                            Text(
+                              "감정 타임라인",
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
