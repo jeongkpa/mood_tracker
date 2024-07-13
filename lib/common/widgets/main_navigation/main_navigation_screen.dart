@@ -1,4 +1,3 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -31,8 +30,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     if (index == 1) {
       var result = await showModalBottomSheet(
         context: context,
-        // barrierColor: Colors.red,
-        // backgroundColor: Colors.transparent,
         builder: (context) => const ModalSheet(),
       );
       if (result == 'post') {
@@ -48,73 +45,58 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     }
   }
 
-  bool _changeIndex(value) {
-    if (value == 1) {
-      _onTap(1);
-      return false;
-    }
-    return true;
-  }
-
   @override
   Widget build(BuildContext context) {
-    // final isDark = isDarkMode(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      // backgroundColor:
-      //     _selectedIndex == 0 || isDark ? Colors.black : Colors.white,
       body: Stack(
         children: [
           Offstage(
             offstage: _selectedIndex != 0,
             child: const PostTimelineScreen(),
-            // child: Container(),
           ),
-          // Offstage(
-          //   offstage: _selectedIndex != 1,
-          //   child: const NewPost(),
-          //   // child: Container(),
-          // ),
           Offstage(
             offstage: _selectedIndex != 2,
             child: const HistoryScreen(),
-            // child: Container(),
           ),
         ],
       ),
       extendBody: true,
-      bottomNavigationBar: CurvedNavigationBar(
-        index: _selectedIndex,
-        letIndexChange: (value) => _changeIndex(value),
-        backgroundColor: Colors.transparent,
-        color: Theme.of(context).colorScheme.primaryContainer,
-        buttonBackgroundColor: Theme.of(context).colorScheme.primaryContainer,
-        // key: _bottomNavigationKey,
-        items: <Widget>[
-          const FaIcon(
-            FontAwesomeIcons.list,
-            size: 24,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onTap,
+        items: [
+          const BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.list, size: 24),
+            label: 'Posts',
           ),
-          Container(
-            width: 50,
-            height: 50,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              shape: BoxShape.circle,
+          BottomNavigationBarItem(
+            icon: Container(
+              width: 50,
+              height: 50,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                shape: BoxShape.circle,
+              ),
+              child: const FaIcon(
+                FontAwesomeIcons.penToSquare,
+                size: 24,
+                color: Colors.white,
+              ),
             ),
-            child: const FaIcon(
-              FontAwesomeIcons.penToSquare,
-              size: 24,
-              color: Colors.white,
-            ),
+            label: 'New Post',
           ),
-          const FaIcon(
-            FontAwesomeIcons.database,
-            size: 24,
+          const BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.database, size: 24),
+            label: 'History',
           ),
         ],
-        onTap: _onTap,
+        selectedItemColor: Theme.of(context).colorScheme.primary,
+        unselectedItemColor: Theme.of(context).colorScheme.onSurface,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       ),
     );
   }
