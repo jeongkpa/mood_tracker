@@ -23,18 +23,19 @@ class _NewEmotionState extends ConsumerState<NewEmotion> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            "What's your mood?",
-            style: TextStyle(
-              fontSize: 24,
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 20.0),
+            child: Text(
+              "당신의 감정을 선택해주세요",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          // Gaps.v20,
           Expanded(
-            child: ListWheelScrollView(
-              diameterRatio: 1.5,
-              offAxisFraction: 0,
-              itemExtent: 200,
+            child: PageView(
+              controller: PageController(viewportFraction: 0.8),
               children: [
                 for (var emotion in [
                   'joy',
@@ -46,13 +47,20 @@ class _NewEmotionState extends ConsumerState<NewEmotion> {
                   GestureDetector(
                     onTap: () => _onTapButton(emotion),
                     child: Container(
-                      // width: 100,
-                      // height: 100,
+                      margin: const EdgeInsets.symmetric(horizontal: 10.0),
                       decoration: BoxDecoration(
-                          border: Border.all(
-                        width: 2,
-                        color: Theme.of(context).colorScheme.tertiaryContainer,
-                      )),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .surfaceContainerHighest,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 5,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                       alignment: Alignment.center,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -61,16 +69,19 @@ class _NewEmotionState extends ConsumerState<NewEmotion> {
                             name: emotion,
                             size: 100,
                           ),
+                          const SizedBox(height: 10),
                           Text(
                             emotion,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).colorScheme.onSurface,
                             ),
                           ),
                         ],
                       ),
                     ),
-                  )
+                  ),
               ],
             ),
           ),
