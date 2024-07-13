@@ -25,7 +25,7 @@ class NewPost extends ConsumerStatefulWidget {
 }
 
 class _NewPostState extends ConsumerState<NewPost> {
-  final String userName = "rafy";
+  final String userName = "jeongkpa";
   final TextEditingController _postEditingController = TextEditingController();
   String _post = "";
   List<File>? _selectedPhotos;
@@ -250,7 +250,7 @@ class _NewPostState extends ConsumerState<NewPost> {
                                       textInputAction: TextInputAction.newline,
                                       keyboardType: TextInputType.multiline,
                                       decoration: const InputDecoration(
-                                        hintText: "Write it down here!",
+                                        hintText: "내용을 적어주세요",
                                         // border: InputBorder.none,
                                         enabledBorder: InputBorder.none,
                                         focusedBorder: InputBorder.none,
@@ -302,7 +302,7 @@ class _NewPostState extends ConsumerState<NewPost> {
                             child: ref.watch(timelineProvider).isLoading
                                 ? const CircularProgressIndicator()
                                 : Text(
-                                    "Post",
+                                    "저장하기",
                                     style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.w800,
