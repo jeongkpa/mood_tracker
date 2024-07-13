@@ -14,44 +14,38 @@ class EmotionIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AnimatedEmojiData emoji;
-    final Color emojiColor;
+    const Color emojiColor = Color(0xFFFFCC80); // 동양인 피부 톤 색상
+
     switch (name) {
       case "joy":
         emoji = AnimatedEmojis.grin;
-        emojiColor = Colors.yellow;
         break;
       case "sadness":
         emoji = AnimatedEmojis.cry;
-        emojiColor = Colors.blue;
         break;
       case "disgust":
         emoji = AnimatedEmojis.raisedEyebrow;
-        emojiColor = Colors.green;
         break;
       case "anger":
         emoji = AnimatedEmojis.rage;
-        emojiColor = Colors.red;
         break;
       case "fear":
         emoji = AnimatedEmojis.anguished;
-        emojiColor = Colors.purple;
         break;
       default:
         emoji = AnimatedEmojis.wink;
-        emojiColor = Colors.grey;
     }
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
       child: ColorFiltered(
-        colorFilter: ColorFilter.mode(emojiColor, BlendMode.hue),
+        colorFilter: const ColorFilter.mode(emojiColor, BlendMode.modulate),
         child: Container(
           color: isDarkMode(context) ? Colors.black : Colors.white,
           child: AnimatedEmoji(
             emoji,
             size: size ?? 80,
             animate: true,
-            // repeat: false,
           ),
         ),
       ),

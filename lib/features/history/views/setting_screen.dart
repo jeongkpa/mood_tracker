@@ -62,44 +62,6 @@ class SettingsScreen extends ConsumerWidget {
               onChanged: (value) =>
                   ref.read(screenConfigProvider.notifier).setDark(value),
               title: const Text("Dark Mode"),
-              subtitle: const Text("다크모드 최고"),
-            ),
-            const ListTile(
-              leading: FaIcon(
-                FontAwesomeIcons.userPlus,
-              ),
-              title: Text("Follow and invite friends"),
-            ),
-            const ListTile(
-              leading: FaIcon(
-                FontAwesomeIcons.bell,
-              ),
-              title: Text("Notifications"),
-            ),
-            const ListTile(
-              leading: FaIcon(
-                FontAwesomeIcons.lock,
-              ),
-              title: Text("Privacy"),
-            ),
-            const ListTile(
-              leading: FaIcon(
-                FontAwesomeIcons.circleUser,
-              ),
-              title: Text("Account"),
-            ),
-            const ListTile(
-              leading: FaIcon(
-                FontAwesomeIcons.hireAHelper,
-              ),
-              title: Text("Help"),
-            ),
-            const AboutListTile(
-              icon: FaIcon(
-                FontAwesomeIcons.circleInfo,
-              ),
-              applicationName: "Assignment #16",
-              child: Text("About"),
             ),
             const Divider(
               thickness: 0.5,
@@ -112,7 +74,7 @@ class SettingsScreen extends ConsumerWidget {
                   context: context,
                   builder: (context) => CupertinoAlertDialog(
                     title: const Text("Are you sure?"),
-                    content: const Text("Please don't go."),
+                    content: const Text("Do you want to log out?"),
                     actions: [
                       CupertinoDialogAction(
                         onPressed: () => Navigator.of(context).pop(),
