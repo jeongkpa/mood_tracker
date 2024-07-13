@@ -67,8 +67,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         onTap: _onTap,
         items: [
           const BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.list, size: 24),
-            label: 'Posts',
+            icon: Icon(Icons.home, size: 24),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Container(
@@ -79,8 +79,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 color: Theme.of(context).primaryColor,
                 shape: BoxShape.circle,
               ),
-              child: const FaIcon(
-                FontAwesomeIcons.penToSquare,
+              child: const Icon(
+                Icons.add,
                 size: 24,
                 color: Colors.white,
               ),
@@ -88,7 +88,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             label: 'New Post',
           ),
           const BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.database, size: 24),
+            icon: Icon(Icons.history, size: 24),
             label: 'History',
           ),
         ],
